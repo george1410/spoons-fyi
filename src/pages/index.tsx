@@ -90,6 +90,25 @@ const Home: FC<{ pubs: Pub[] }> = ({ pubs }) => {
           property="og:description"
           content="Find the best value-for-money in wetherspoons, because why else would you drink there?"
         />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <main className={`${styles.main} ${poppins.className}`}>
         <div className={styles.content}>
