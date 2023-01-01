@@ -1,0 +1,23 @@
+body {
+  background-color: #1e3250;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+html {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#__next {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

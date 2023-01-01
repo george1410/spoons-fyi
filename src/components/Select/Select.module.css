@@ -1,0 +1,42 @@
+.select select {
+  appearance: none;
+
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  outline: none;
+  color: #1e3250;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+
+  min-width: fit-content;
+  width: 100%;
+  text-overflow: ellipsis;
+  padding-right: 2rem;
+}
+
+.select {
+  display: flex;
+  color: #1e3250;
+  background-color: #ffffff;
+
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 5px;
+
+  position: relative;
+}
+
+.chevron {
+  color: #1e3250;
+  right: 1rem;
+  
+
+  align-self: center;
+
+  position: absolute;
+  pointer-events: none;
+}

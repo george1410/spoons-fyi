@@ -1,0 +1,61 @@
+.select select {
+  appearance: none;
+
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  outline: none;
+  color: #1e3250;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+
+  width: 100%;
+  text-overflow: ellipsis;
+  padding-right: 2rem;
+}
+
+.select {
+  display: flex;
+  width: 100%;
+  color: #1e3250;
+  background-color: #ffffff;
+
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 5px;
+
+  position: relative;
+}
+
+.chevron {
+  color: #1e3250;
+  right: 1rem;
+  
+
+  align-self: center;
+
+  position: absolute;
+  pointer-events: none;
+}
+
+.locationButton {
+  color: #1e3250;
+  display: flex;
+  align-items: center;
+  background: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  border: none;
+  font-size: 1.3rem;
+
+  cursor: pointer;
+  aspect-ratio: 1;
+}
+
+.locationButton:hover {
+  background: #e3e3e3;
+}
