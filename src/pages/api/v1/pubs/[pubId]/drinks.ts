@@ -34,7 +34,8 @@ const getCategory = (product: { menu: string; group: string }): Category => {
     product.menu === 'Craft and world beers | Bottles & cans' ||
     (product.menu === 'Lager, beer, craft and cider | Draught' &&
       product.group === 'Lager and beer') ||
-    product.group === 'Craft'
+    product.group === 'Craft' ||
+    product.menu === 'World beers & craft | Bottles & cans'
   ) {
     return 'Beer';
   }
