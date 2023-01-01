@@ -10,8 +10,8 @@
   font-family: inherit;
   font-weight: inherit;
 
-  min-width: fit-content;
-  width: 100%;
+  min-width: 100%;
+  width: fit-content;
   text-overflow: ellipsis;
   padding-right: 2rem;
   overflow-x: hidden;
