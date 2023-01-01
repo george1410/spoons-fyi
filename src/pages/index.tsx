@@ -19,8 +19,11 @@ export type Pub = {
   longitude: number;
 };
 
-const poppins = Poppins({ weight: ['400', '500', '600', '700'] });
-const inconsolata = Inconsolata();
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+const inconsolata = Inconsolata({ display: 'swap' });
 
 export const getServerSideProps: GetServerSideProps<{ pubs: Pub[] }> = async (
   context
