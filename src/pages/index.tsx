@@ -82,6 +82,9 @@ const Home: FC<{ pubs: Pub[] }> = ({ pubs }) => {
       <main className={`${styles.main} ${poppins.className}`}>
         <div className={styles.content}>
           <h1 className={styles.title}>🍻 spoons.fyi</h1>
+          <p className={styles.tagline}>
+            Because nobody&apos;s in Wetherspoons for the atmosphere...
+          </p>
           <div className={styles.controls}>
             <PubSelector
               onChange={setSelectedPubId}

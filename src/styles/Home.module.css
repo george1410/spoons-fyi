@@ -17,6 +17,13 @@
 
 .title {
   font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
