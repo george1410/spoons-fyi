@@ -1,0 +1,35 @@
+.list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.list li:first-child {
+  border-radius: 5px;
+  background-color: #66CDA3;
+  color:#1e3250;
+}
+
+
+.list li .rank {
+  font-size: 3rem;
+  font-weight: 700;
+  color:#3863A0;
+}
+
+.list li h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  line-height: 1.8rem;
+  margin: 0.3rem 0;
+}
