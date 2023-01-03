@@ -6,6 +6,7 @@ import { Inconsolata } from '@next/font/google';
 import styles from './DrinksList.module.css';
 import { DrinksResponse } from '../../pages/api/v1/pubs/[pubId]/drinks';
 import Error from '../Error';
+import { BeatLoader } from 'react-spinners';
 
 const inconsolata = Inconsolata({ display: 'swap' });
 
@@ -49,7 +50,12 @@ const DrinksList: FC<{
   }
 
   if (isLoading) {
-    return <p>Brewing the results...</p>;
+    return (
+      <>
+        <p>Brewing the results</p>
+        <BeatLoader color="#ffffff" />
+      </>
+    );
   }
 
   if (isError) {

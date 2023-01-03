@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { FC } from 'react';
+import { BeatLoader } from 'react-spinners';
 import { getPubs } from '../../lib/wetherspoonsApi';
 import Error from '../Error';
 import PubSelector from '../PubSelector';
@@ -35,7 +36,12 @@ const Controls: FC<{
   });
 
   if (isLoading) {
-    return <>Loading...</>;
+    return (
+      <>
+        Loading
+        <BeatLoader color="#ffffff" />
+      </>
+    );
   }
 
   if (isError) {
