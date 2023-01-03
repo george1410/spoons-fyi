@@ -9,6 +9,7 @@ import {
 import '../styles/globals.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Layout from '../components/Layout';
 config.autoAddCss = false;
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -17,7 +18,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
         <Analytics />
       </Hydrate>
     </QueryClientProvider>
