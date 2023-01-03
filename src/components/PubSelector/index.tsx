@@ -17,7 +17,7 @@ const distance = (
   );
 
 const PubSelector: FC<{
-  pubs: Pub[];
+  pubs?: Pub[];
   onChange: (id: string) => void;
   selectedPubId: string;
 }> = ({ pubs, onChange, selectedPubId }) => {
@@ -30,7 +30,7 @@ const PubSelector: FC<{
             const myPosition = position.coords;
 
             const distances = pubs
-              .map((pub) => ({
+              ?.map((pub) => ({
                 ...pub,
                 distance: distance(myPosition, {
                   latitude: pub.latitude,
@@ -39,7 +39,7 @@ const PubSelector: FC<{
               }))
               .sort((a, b) => a.distance - b.distance);
 
-            onChange(distances[0].id.toString());
+            if (distances) onChange(distances[0].id.toString());
           });
         }}
       >
@@ -50,7 +50,7 @@ const PubSelector: FC<{
           Find nearest, or select a Wetherspoons pub
         </option>
         {pubs
-          .sort((a, b) => a.name.localeCompare(b.name))
+          ?.sort((a, b) => a.name.localeCompare(b.name))
           .map((pub) => (
             <option key={pub.id} value={pub.id}>
               {pub.name}, {pub.locationName}

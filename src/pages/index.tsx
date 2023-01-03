@@ -57,11 +57,32 @@ const getDrinkTypeText = (category: string) => {
   }
 };
 
-const Home: FC<{ pubs: Pub[] }> = ({ pubs }) => {
+const Home: FC = () => {
   const [selectedPubId, setSelectedPubId] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const { data, isLoading, isInitialLoading, isError } = useQuery(
+  const {
+    data: pubs,
+    isLoading: isLoadingPubs,
+    isError: isErrorPubs,
+  } = useQuery(['pubs'], getPubs, {
+    select: (pubs) =>
+      pubs.map((pub) => ({
+        name: pub.name,
+        sortName: pub.sortName,
+        id: pub.venueId,
+        locationName: pub.menuLocation,
+        latitude: pub.lat,
+        longitude: pub.long,
+      })),
+  });
+
+  const {
+    data: drinks,
+    isLoading: isLoadingDrinks,
+    isInitialLoading: isInitialLoadingDrinks,
+    isError: isErrorDrinks,
+  } = useQuery(
     ['drinks', selectedPubId],
     async ({ queryKey }) => {
       const { data } = await axios.get<DrinksResponse>(
@@ -116,25 +137,42 @@ const Home: FC<{ pubs: Pub[] }> = ({ pubs }) => {
           <p className={styles.tagline}>
             Because nobody&apos;s in Wetherspoons for the atmosphere...
           </p>
-          <div className={styles.controls}>
-            <PubSelector
-              onChange={setSelectedPubId}
-              selectedPubId={selectedPubId}
-              pubs={pubs}
-            />
+          {isLoadingPubs ? (
+            'Loading...'
+          ) : isErrorPubs ? (
+            <p>
+              Something went wrong.{' '}
+              <a
+                className={styles.errorLink}
+                href="https://www.youtube.com/watch?v=6htT-aVJup4"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Let&apos;s Go to the Winchester, have a nice cold pint, and wait
+                for all this to blow over.
+              </a>
+            </p>
+          ) : (
+            <div className={styles.controls}>
+              <PubSelector
+                onChange={setSelectedPubId}
+                selectedPubId={selectedPubId}
+                pubs={pubs}
+              />
 
-            <Select onChange={setSelectedCategory} value={selectedCategory}>
-              <option value="All">All Drinks</option>
-              <option value="Beer">Beer</option>
-              <option value="Cider">Cider</option>
-              <option value="Wine">Wine</option>
-              <option value="Other">Other</option>
-            </Select>
-          </div>
-          {isInitialLoading || (data && isLoading) ? (
+              <Select onChange={setSelectedCategory} value={selectedCategory}>
+                <option value="All">All Drinks</option>
+                <option value="Beer">Beer</option>
+                <option value="Cider">Cider</option>
+                <option value="Wine">Wine</option>
+                <option value="Other">Other</option>
+              </Select>
+            </div>
+          )}
+          {isInitialLoadingDrinks || (drinks && isLoadingDrinks) ? (
             <p>Brewing the results...</p>
           ) : null}
-          {isError ? (
+          {isErrorDrinks ? (
             <p>
               Something went wrong.{' '}
               <a
@@ -148,9 +186,9 @@ const Home: FC<{ pubs: Pub[] }> = ({ pubs }) => {
               </a>
             </p>
           ) : null}
-          {data ? (
+          {drinks ? (
             <ol className={styles.list}>
-              {data
+              {drinks
                 .filter((drink) =>
                   selectedCategory === 'All'
                     ? true
@@ -167,8 +205,9 @@ const Home: FC<{ pubs: Pub[] }> = ({ pubs }) => {
                         <span>
                           The best value {getDrinkTypeText(selectedCategory)} in{' '}
                           {
-                            pubs.find((pub) => String(pub.id) === selectedPubId)
-                              ?.name
+                            pubs?.find(
+                              (pub) => String(pub.id) === selectedPubId
+                            )?.name
                           }
                           :
                         </span>
