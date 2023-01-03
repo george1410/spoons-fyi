@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 3rem 1rem;
   width: 100%;
   box-sizing: border-box;
   min-height: 100%;
@@ -13,5 +13,6 @@
 @media (min-width: 768px) {
   .main {
     max-width: 960px;
+    padding: 2rem 1rem;
   }
 }
